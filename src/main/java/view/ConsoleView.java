@@ -2,17 +2,29 @@ package view;
 
 
 
+import controller.LagerController;
 import controller.ProductController;
+import model.LagerAktualisierung;
 import model.Product;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class ConsoleView {
     private ProductController controller;
+    private LagerController lagerController;
 
-    public ConsoleView(ProductController controller) {
+    public ConsoleView(ProductController controller, LagerController lagerController) {
+
         this.controller = controller;
+        this.lagerController = lagerController;
+
+        controller.add(new Product(1, "Product A", 100, "sku", 10));
+        controller.add(new Product(2, "Product B", 100, "sku", 15));
+
+
     }
 
     /**
@@ -26,6 +38,11 @@ public class ConsoleView {
                     2. add product
                     3. delete product
                     4. update product
+                    5. show Lager entries
+                    6. add entry
+                    7. delete entry
+                    8. update entry
+                    9. update Lager
                     """);
     }
 
@@ -54,6 +71,12 @@ public class ConsoleView {
                 case 4:
                     controller.update(createProduct());
                     break;
+                case 5:
+                    printLagerUpdates(lagerController.getAll());
+                    break;
+                case 9:
+                    printProducts(controller.updateLager());
+                    break;
                 default:
                     System.out.println("Option not valid");
                     startConsole();
@@ -69,6 +92,12 @@ public class ConsoleView {
     public void printProducts(List<Product> products) {
         for (Product product : products) {
             System.out.println(product);
+        }
+    }
+
+    public void printLagerUpdates(List<LagerAktualisierung> entries) {
+        for (LagerAktualisierung entry : entries) {
+            System.out.println(entry);
         }
     }
 
