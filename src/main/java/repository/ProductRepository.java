@@ -41,6 +41,7 @@ public class ProductRepository extends InMemoryRepository<Product>{
         productToUpdate.setPreis(entity.getPreis());
         productToUpdate.setName(entity.getName());
         productToUpdate.setSku(entity.getSku());
+        productToUpdate.setAnzahl(entity.getAnzahl());
 
         return productToUpdate;
     }

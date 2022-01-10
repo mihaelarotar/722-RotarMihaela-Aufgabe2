@@ -7,15 +7,17 @@ public class Product {
     private String name;
     private int preis;
     private String sku;
+    private int anzahl;
 
     public Product() {
     }
 
-    public Product(Integer id, String name, int preis, String sku) {
+    public Product(Integer id, String name, int preis, String sku, int anzahl) {
         this.id = id;
         this.name = name;
         this.preis = preis;
         this.sku = sku;
+        this.anzahl = anzahl;
     }
 
     public Integer getId() {
@@ -50,6 +52,14 @@ public class Product {
         this.sku = sku;
     }
 
+    public int getAnzahl() {
+        return anzahl;
+    }
+
+    public void setAnzahl(int anzahl) {
+        this.anzahl = anzahl;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -57,6 +67,7 @@ public class Product {
                 ", name='" + name + '\'' +
                 ", preis=" + preis +
                 ", sku='" + sku + '\'' +
+                ", anzahl=" + anzahl +
                 '}';
     }
 
